@@ -10,10 +10,11 @@ def pin_to_ipfs(data):
 	files = {'file.json': str(outfile)}	
 	#print(files)
 	response = requests.post('https://ipfs.infura.io:5001/api/v0/add', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
-	print(response.text)
+	text = response.text
+	json_object = json.loads(text)
+	print(text)
 	print('============')
-	file_list = response.json()
-	cid = file_list['Pins'][0]
+	cid = json_object['Hash']
 	print(cid)
 	print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
 	return cid
