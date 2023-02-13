@@ -8,7 +8,7 @@ def pin_to_ipfs(data):
 		json.dump(data, outfile) 
 	files = {'file': str(data)}	
 	print(files)
-	response = requests.post('https://web.archive.org/web/20221206091957/https://ipfs.infura.io:5001/api/v0/cat', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
+	response = requests.post('https://ipfs.infura.io:5001/api/v0/cat', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
 	print(response.text)
 	file_list = response.json()
 	cid = file_list['Pins'][0]
@@ -20,3 +20,7 @@ def get_from_ipfs(cid,content_type="json"):
 
 	assert isinstance(data,dict), f"get_from_ipfs should return a dict"
 	return data
+
+
+#response = requests.post('https://web.archive.org/web/20221206091957/https://ipfs.infura.io:5001/api/v0/cat', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
+#	print(response.text)
