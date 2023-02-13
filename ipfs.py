@@ -23,7 +23,7 @@ def get_from_ipfs(cid,content_type="json"):
 	params = (('arg',cid),)
 	response = requests.post('https://ipfs.infura.io:5001/api/v0/cat', params=params, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
 	text = response.text
-	print(text)
+	#print(text)
 	data = json.loads(text)
 	assert isinstance(data,dict), f"get_from_ipfs should return a dict"
 	return data
