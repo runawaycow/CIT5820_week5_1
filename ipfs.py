@@ -12,17 +12,19 @@ def pin_to_ipfs(data):
 	response = requests.post('https://ipfs.infura.io:5001/api/v0/add', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
 	text = response.text
 	json_object = json.loads(text)
-	print(text)
-	print('============')
+	#print(text)
+	#print('============')
 	cid = json_object['Hash']
-	print(cid)
-	print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
 	return cid
 
 def get_from_ipfs(cid,content_type="json"):
 	assert isinstance(cid,str), f"get_from_ipfs accepts a cid in the form of a string"
 	#YOUR CODE HERE	
-
+	params = (('arg',cid),)
+	response = requests.post('https://ipfs.infura.io:5001/api/v0/cat', params=params, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
+	text = response.text
+	print(text)
+	data = json.loads(text)
 	assert isinstance(data,dict), f"get_from_ipfs should return a dict"
 	return data
 
