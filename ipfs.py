@@ -6,6 +6,7 @@ def pin_to_ipfs(data):
 	#YOUR CODE HERE
 	#with open("sample.json", "w+") as outfile:
 	outfile =	json.dump(data) 
+	print(outfile)
 	files = {'file.json': str(outfile)}	
 	print(files)
 	response = requests.post('https://ipfs.infura.io:5001/api/v0/cat', files=files, auth=('2LgqjZLmpHnRS52JcP9fDQEH83S','205aa3dbd378a8f1bc392ddd6f9cbf15'))
