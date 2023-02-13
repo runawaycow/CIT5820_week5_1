@@ -14,6 +14,8 @@ def pin_to_ipfs(data):
 	print('============')
 	file_list = response.json()
 	cid = file_list['Pins'][0]
+	print(cid)
+	print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
 	return cid
 
 def get_from_ipfs(cid,content_type="json"):
